@@ -1,0 +1,20 @@
+{
+  "name": "polyrhythm-counter-websocket-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "node-static": "0.7.11",
+    "polyrhythm": "1.0.0",
+    "react": "16.13.1",
+    "rxjs": "6.5.5",
+    "socket.io": "2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  },
+  "keywords": []
+}

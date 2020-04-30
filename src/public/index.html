@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://www.unpkg.com/socket.io-client@2.3.0/dist/socket.io.js"></script>
+    <script type="module">
+      import { trigger, listen as on } from "./polyrhythm.1.0.0.development.js";
+
+      // Connect to the websocket
+      connectSocketIO();
+
+      // Track local state and update it on ticks
+      let count = 0;
+      on("tick", () => {
+        count++;
+        document.getElementById("current-count").innerText = count;
+      });
+
+      //debugging
+      on(true, ({ type, payload }) => console.log(type, payload));
+
+      // Socket 'event's become channel events
+      function connectSocketIO() {
+        const url = "https://o6dn2.sse.codesandbox.io/";
+        let socket = io(url);
+        socket.connect();
+        socket.on("event", ({ type, payload }) => {
+          trigger(type, payload);
+        });
+      }
+    </script>
+  </head>
+  <div>The count is <span id="current-count">[TBD]</span>!</div>
+</html>
